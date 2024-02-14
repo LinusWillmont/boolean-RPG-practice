@@ -1,4 +1,5 @@
 using exercise.minimalapi.Utils;
+using exercise.wwwapi.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -53,7 +54,7 @@ namespace RpgApi
             builder.Services.AddDbContext<RpgContext>(
             opt =>
             {
-                opt.UseNpgsql(builder.Configuration.GetConnectionString("ElephantConnectionString"));
+                opt.UseNpgsql(builder.Configuration.GetConnectionString("DockerConnectionString"));
             });
 
 
@@ -102,11 +103,16 @@ namespace RpgApi
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
+            /*
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            */
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 
@@ -114,6 +120,8 @@ namespace RpgApi
             app.UseAuthorization();
 
             app.ConfigurePlayersEndpoints();
+            
+            app.ApplyProjectMigrations();
 
             app.Run();
         }

@@ -34,7 +34,7 @@ namespace RpgApi.Repositories.PlayersRepos
 
         }
 
-        public async Task<Player?> RegisterPlayerAsync(string username, string password, string email)
+        public async Task<Player?> RegisterPlayerAsync(string username, string email, string password)
         {
             var result = await _userManager.CreateAsync(new Player
             {
