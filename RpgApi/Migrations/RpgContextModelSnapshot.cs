@@ -156,6 +156,26 @@ namespace RpgApi.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "80c8b6b1-e2b6-45e8-b044-8f2178a90111",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a7d11b40-d483-4140-9ffc-3f2dffa68b47",
+                            Email = "admin@example.com",
+                            EmailConfirmed = false,
+                            IsBanned = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJXcgCT0bOE7r6Nopzj3TW7WSDwUIwyTM4AvCIRX1i57fO+yDfmIiiO7sjApvZwicQ==",
+                            PhoneNumberConfirmed = false,
+                            Role = 1,
+                            SecurityStamp = "e841c608-e05d-4bed-98ca-682ed07acf74",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>

@@ -7,7 +7,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RpgApi.Data;
 using RpgApi.Endpoints;
+using RpgApi.Helpers;
 using RpgApi.Models;
+using RpgApi.Repositories.PlayerRepos;
 using RpgApi.Repositories.PlayersRepos;
 using System.Text;
 
@@ -59,10 +61,12 @@ namespace RpgApi
 
 
             builder.Services.AddScoped<TokenService, TokenService>();
+            builder.Services.AddScoped<IAuthRepo, AuthRepo>();
             builder.Services.AddScoped<IPlayerRepo, PlayerRepo>();
 
             builder.Services.AddIdentity<Player, IdentityRole>(options =>
             {
+                
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
@@ -119,7 +123,7 @@ namespace RpgApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.ConfigurePlayersEndpoints();
+            app.ConfigureAllEndpoints();
             
             app.ApplyProjectMigrations();
 

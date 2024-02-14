@@ -100,6 +100,11 @@ namespace RpgApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "IsBanned", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Role", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "80c8b6b1-e2b6-45e8-b044-8f2178a90111", 0, "a7d11b40-d483-4140-9ffc-3f2dffa68b47", "admin@example.com", false, false, false, null, "ADMIN@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEJXcgCT0bOE7r6Nopzj3TW7WSDwUIwyTM4AvCIRX1i57fO+yDfmIiiO7sjApvZwicQ==", null, false, 1, "e841c608-e05d-4bed-98ca-682ed07acf74", false, "admin" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",

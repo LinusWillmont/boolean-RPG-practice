@@ -1,13 +1,11 @@
-﻿using RpgApi.Models;
+﻿using RpgApi.Enums;
+using RpgApi.Models;
 
-namespace RpgApi.Repositories.PlayersRepos
+namespace RpgApi.Repositories.PlayerRepos
 {
     public interface IPlayerRepo
     {
-        public Task<Player?> RegisterPlayerAsync(string username, string email, string password);
-
-        public Task<Tuple<Player,string>?> LoginPlayerAsync(string email, string password);
-
-        public Task<Player?> GetPlayerAsync(string email);
+        public Task<Character?> CreateCharacter(string playerId, string name, Class charClass);
+        public Task<List<Character>> GetPlayersCharacters(string playerId);
     }
 }
